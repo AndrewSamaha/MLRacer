@@ -7,7 +7,7 @@ import random
 
 mydb = mysql.connect(
     host="127.0.0.1",
-    port=49156,
+    port=49157,
     user="root",
     password="datascience",
     database="racer")
@@ -39,10 +39,8 @@ def hello(name):
 @app.route('/putdata/', methods = ['POST', 'GET'])
 def data():
     if request.method == 'POST':
-        print(" received POST")
+        #print(" received POST")
         #print(request.get_json().get('i'))
-        
-        
         time = request.get_json().get('t')
         position = request.get_json().get('p')
         velocity = request.get_json().get('v')

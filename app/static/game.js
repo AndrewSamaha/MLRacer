@@ -14,7 +14,7 @@ const cameraDepth = 1;               // FOV of camera (1 / Math.tan((fieldOfView
 const roadSegmentLength = 100;       // length of each road segment
 const roadWidth = 300;               // how wide is road
 const warningTrackWidth = 300;       // with of road plus warning track
-const dashLineWidth = 12;             // width of the dashed line in the road
+const dashLineWidth = 20;             // width of the dashed line in the road
 const maxPlayerX = 2e3;              // player can not move this far from center of road
 const mountainCount = 6;            // how many mountains are there
 const timeDelta = 1/60;              // inverse frame rate
@@ -38,7 +38,7 @@ const offRoadDamping = .98;          // more damping when off road
 const gravity = -1;                  // gravity to apply in y axis
 const cameraHeadingScale = 2;        // scale of player turning to rotate camera
 const worldRotateScale = .00005;     // how much to rotate world around turns
-const minimumBlobSendInterval = 250; // the minimum amount of time between sending image blobs to the server
+const minimumBlobSendInterval = 10; // the minimum amount of time between sending image blobs to the server
     
 // level settings
 const maxTime = 20;                  // time to start with
@@ -357,7 +357,8 @@ function Update()
                     DrawPoly(context,
                         p1.x, p1.y, p1.z*(segment1.w+warningTrackWidth),       // warning track top
                         p2.x, p2.y, p2.z*(segment2.w+warningTrackWidth),            // warning track bottom
-                        LSHA(((playerRoadSegment+i)%19<9? 50: 20)+lighting));       // warning track stripe color
+                        LSHA(((playerRoadSegment+i)%19<9? 100: 20)+lighting));       // warning track stripe color
+                        //LSHA(((playerRoadSegment+i)%19<9? 50: 20)+lighting));       // warning track stripe color
                 
                 // road
                 const z = (playerRoadSegment+i)*roadSegmentLength;                  // segment distance
@@ -368,11 +369,11 @@ function Update()
                     
                 // dashed lines
                 if (segment1.w > 300)                                               // no dash lines if very thin
-                    (playerRoadSegment+i)%1==0 && i < drawDistance/3 &&             // make dashes and skip if far out
+                    (playerRoadSegment+i)%5==0 && i < drawDistance/3 &&             // make dashes and skip if far out
                         DrawPoly(context,
                             p1.x, p1.y, p1.z*dashLineWidth,                    // dash lines top
                             p2.x, p2.y, p2.z*dashLineWidth,                             // dash lines bottom
-                            LSHA(25, 255, 29));
+                            LSHA(255, 255, 0));
                         //LSHA(70+lighting));                                         // dash lines color
 
                 segment2 = segment1;                                                // prep for next segment
@@ -502,9 +503,9 @@ function DrawTopDownCar(d) {
 function receiveCanvasBlob(data, blob) {
     // do nothin'
     data.time = Date.now();
-    if (data.sendToServer) {
-        console.log("about to send some data to the server: ");
-        console.log(blob.length);
+    if (1 && data.sendToServer) {
+       // console.log("about to send some data to the server: ");
+        //console.log(blob.length);
         
        $.ajax({
            url: "/putdata/",
@@ -692,11 +693,12 @@ function UpdateDebugPost()
     }
     
     UpdateInput();
-    
+    UpdateFps();
+
     if (!debug)
         return;
     
-    UpdateFps();
+    
     
     context.font='2em"';
     for (let i in debugPrintLines)
@@ -745,9 +747,9 @@ function UpdateFps()
     //output += "PlayerTurnAmount: " + d.playerTurnAmount + "<br>";
     output += "fps: " + averageFps;
     $("#fps").html(output);
-    context.font='3em"';
-    context.fillStyle='#0007';
-    context.fillText(averageFps|0,c.width-90,c.height-40);
+    //context.font='3em"';
+    //context.fillStyle='#0007';
+    //context.fillText(averageFps|0,c.width-90,c.height-40);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
