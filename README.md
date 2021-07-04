@@ -1,7 +1,7 @@
 # MLRacer
 This project is inspired by the work of Assistant Professor [Madhur Behl](https://engineering.virginia.edu/faculty/madhur-behl) in the Department of Computer Science at the University of Virginia and uses a modified version of [HueRacer](https://github.com/KilledByAPixel/HueJumper2k) by [Frank Force](https://github.com/KilledByAPixel).
 
-![Video of HueRacer](https://github.com/AndrewSamaha/MLRacer/raw/main/original.webm)
+![Video of HueRacer](https://github.com/AndrewSamaha/MLRacer/raw/main/original.gif)
 
 
 # Why Autonomous Racing?
