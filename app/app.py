@@ -4,6 +4,7 @@ import json
 import mysql.connector as mysql
 import numpy as np
 import random
+from src.db import *
 
 mydb = mysql.connect(
     host="127.0.0.1",
@@ -12,19 +13,14 @@ mydb = mysql.connect(
     password="datascience",
     database="racer")
 
-
-  #host="localhost",
-  ###port=49153,
-  #user="root",
-  #password="datascience",
-  #auth_plugin="mysql_native_password")
 dbcursor = mydb.cursor()
 
 app=Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    batchList = getBatches(mydb)
+    return render_template('index.html', batchList=batchList)
 
 @app.route('/train')
 def root():
@@ -36,6 +32,23 @@ def hello(name):
     """
     return render_template('hello.html', name=name)
 
+@app.route('/getdata', methods=["GET", "POST"])
+def chooser():
+    # Option list returns a list of JSON objects 
+    option_list = getBatches(mysql)
+    # {u'_id': ObjectId('52a347343be0b32a070e5f4f'), u'optid': u'52a347343be0b32a070e5f4e'}
+
+    # for debugging, checks out ok
+    print(option_list)
+
+    # Get selected id & return it
+    if request.form['submit'] == 'Select':
+            optid = o.optid
+            resp = 'You chose: ', optid
+            return Response(resp)
+
+    return render_template('chooser.html')
+
 @app.route('/putdata/', methods = ['POST', 'GET'])
 def data():
     if request.method == 'POST':
@@ -45,15 +58,17 @@ def data():
         position = request.get_json().get('p')
         velocity = request.get_json().get('v')
         rotation = request.get_json().get('r')
+        batchid  = request.get_json().get('b')
         image = request.get_json().get('i')
-        insertCmd = "INSERT into images(time, position, velocity, rotation, image) VALUES ('"+str(time)+"', '"+str(position)+"','"+str(velocity)+"','"+str(rotation)+"','"+image+"');"
+        saveImage(mydb, batchid, 0, time, position, velocity, rotation, image)
+        # insertCmd = "INSERT into images(time, position, velocity, rotation, batchid, image) VALUES ('"+str(time)+"', '"+str(position)+"','"+str(velocity)+"','"+str(rotation)+"','"+str(batchid)+"','"+image+"');"
         
-        try:
-            dbcursor.execute(insertCmd)
-            mydb.commit()
-        except Exception as e:
-            print(f"Exception: {e}")
-            return f"Exception: {e}"
+        # try:
+        #     dbcursor.execute(insertCmd)
+        #     mydb.commit()
+        # except Exception as e:
+        #     print(f"Exception: {e}")
+        #     return f"Exception: {e}"
         return f"200 {position} + {velocity} + {image}"
 
 @app.route('/model/')

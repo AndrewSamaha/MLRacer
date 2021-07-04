@@ -506,7 +506,8 @@ function receiveCanvasBlob(data, blob) {
     if (1 && data.sendToServer) {
        // console.log("about to send some data to the server: ");
         //console.log(blob.length);
-        
+        let batchid = $('#batchSelector').find(":selected").val();
+        console.log("batch: " + batchid);
        $.ajax({
            url: "/putdata/",
            type: "POST",
@@ -517,6 +518,7 @@ function receiveCanvasBlob(data, blob) {
             p: data.playerPosX,
             v: data.playerVelocity.z,
             r: data.playerTurnAmount,
+            b: batchid,
             i: blob
             }),
            processData: false
