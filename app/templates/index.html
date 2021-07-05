@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Flask Case Study</title>
+        <title>MLRacer</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="static/index.css">
         <link type="text/css" rel="stylesheet"
@@ -8,7 +8,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
         body {
-            background-image: url("static/background.jpeg");
             background-color: #cccccc;
             color: white;
             }
@@ -53,7 +52,7 @@
                 {% endblock content %}
             </div>
             <div id=parameters style='position:absolute;left:50%;top:50%;width:320px;height:310px;background-color:white;color:black'></div>
-            <div id=fps style='position:absolute;left:10%;top:40px;width:300px;height:25px;background-color:white;color:black'></div>
+            <div id=fps style='position:absolute;left:10%;top:70px;width:300px;height:20px;background-color:white;color:black'></div>
         </div>
         <script src="{{ url_for('static',filename='game.js')}}"></script>
         <!-- <script>$("#c").css({"height":"500px", "width":"500px"})</script> -->

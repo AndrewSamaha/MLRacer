@@ -74,6 +74,11 @@ def getBatches(db):
     dbcursor.execute(f"SELECT * FROM batches")
     return dbcursor.fetchall()
 
+def getLayers(db):
+    dbcursor = db.cursor()
+    dbcursor.execute(f"SELECT * FROM processing_layers")
+    return dbcursor.fetchall()
+
 # def saveImage(db, batchid, layerid, time, position, velocity, rotation, image):
 #     insertCmd = "INSERT into images(time, position, velocity, rotation, batchid, layerid, image) VALUES ('"+str(time)+"', '"+str(position)+"','"+str(velocity)+"','"+str(rotation)+"','"+str(batchid)+"','"+str(layerid)+"','%s');"
 #     try:
@@ -89,3 +94,27 @@ def saveImage(db, batchid, layerid, time, position, velocity, rotation, image):
         db.commit()
     except Exception as e:
         print(f"Exception: {e}")
+
+def getDataset(db, batch, layer):
+    dbcursor = db.cursor()
+    dbcursor.execute(f"SELECT * FROM images WHERE layerid = '{layer}' and batchid = '{batch}'")
+    results = dbcursor.fetchall()
+    X = None
+    Y = None
+    for result in results:
+        image_arr = uriToNP(result[7])
+        x_row = image_arr.reshape(1,-1)
+        #print(x_row.shape)
+        
+        position = result[2]
+        velocity = result[3]
+        rotation = result[4]
+        y_row = np.array([position, velocity, rotation]).reshape(1,-1)
+        if X is not None:
+            X = np.vstack((X, x_row))
+            Y = np.vstack((Y, y_row))
+        else:
+            X = x_row
+            Y = y_row
+            
+    return X, Y
