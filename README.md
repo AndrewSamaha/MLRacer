@@ -19,4 +19,4 @@ This project focuses on the first problem, perception. That is given a driver's 
 ## Baseline
 The goal was to start with a very simple NN. I chose a 3 layer NN (2500, 25-relu, and 3) and a mean-squared-error loss function because I was wanted to minimize the error between the actual and predicted values of 3 target tasks (velocity, position, and rotation). I evaluated the results across a range of 10 to 225 epochs and got both and flat r-squared values on the test dataset:
 
-![Baseline alpha.v2](https://github.com/AndrewSamaha/MLRacer/img/raw/main/alpha.v2.png)
+![Baseline alpha.v2](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.v2.png?raw=true)
