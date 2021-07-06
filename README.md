@@ -13,7 +13,7 @@ Autonomous driving systems need to solve three problems:
 1. Planning
 1. Control
 
-This project focuses on the first problem, perception. That is given a driver's point-of-view, can a model be trained to identify the vehicles position, speed, and trajectory on the road?
+Work by Behl has shown that simple (alghorithmic as opposed to deep-learning) approaches to control can produce AI drivers as good as the best human drivers once perception has been solved. Therefore, this project focuses on perception. That is given a driver's point-of-view, can a model be trained to identify the vehicles position, speed, and trajectory on the road? 
 
 # Iteration
 ## Baseline
@@ -90,3 +90,11 @@ Adamax bottomed out pretty quickly. Might benefit from a lower learning rate.
 Nadam bottomed out pretty quickly. Might benefit from a lower learning rate.
 1000 epochs...
 ![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.nadam.unnormalized.1000epochs.png?raw=true)
+
+## Experiments with mean squared logarithmic error
+
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.rmsprop.msle.unnormalized.1000epochs.png?raw=true)
+
+## Experiments with mean absolute error
+
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.rmsprop.mae.unnormalized.1000epochs.png?raw=true)
