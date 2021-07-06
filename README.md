@@ -69,3 +69,24 @@ Unnormalized Inputs (100 epochs):
 Unnormalized Inputs (1000 epochs):
 
 ![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.rmsprob.unnormalized.1000epochs.png?raw=true)
+
+## Adadelta
+It's good to know what doesn't work, right?
+1000 epochs...
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.adadelta.unnormalized.1000epochs.png?raw=true)
+
+
+## Adagrad
+The interesting thing here is that each epoch produced a very consistent decrease in error. So this has some potential to do better given more epochs. I also like the shape of the distribution in the test set.
+1000 epochs...
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.adagrad.unnormalized.1000epochs.png?raw=true)
+
+## Adamax
+Adamax bottomed out pretty quickly. Might benefit from a lower learning rate.
+1000 epochs...
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.adamax.unnormalized.1000epochs.png?raw=true)
+
+## Nadam
+Nadam bottomed out pretty quickly. Might benefit from a lower learning rate.
+1000 epochs...
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.nadam.unnormalized.1000epochs.png?raw=true)
