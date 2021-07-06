@@ -45,6 +45,8 @@ The good news is that nothing unusual is happening here -- the ranges are exactl
 
 ![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha2.position.png?raw=true)
 
+## Effect of Normalization
+
 Normalized Inputs (50 epochs):
 
 ![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.normalized.50epochs.png?raw=true)
@@ -52,6 +54,16 @@ Normalized Inputs (50 epochs):
 Unnormalized Inputs (50 epochs):
 
 ![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.unnormalized.50epochs.png?raw=true)
+
+Unnormalized Inputs (1000 epochs):
+
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.unnormalized.1000epochs.png?raw=true)
+
+## SGD
+
+Unnormalized Inputs (100 epochs):
+
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.sgd.unnormalized.100epochs.png?raw=true)
 
 Unnormalized Inputs (1000 epochs):
 
