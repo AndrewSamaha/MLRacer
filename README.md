@@ -59,12 +59,13 @@ Unnormalized Inputs (1000 epochs):
 
 ![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.unnormalized.1000epochs.png?raw=true)
 
-## SGD
+## SGD - no worky
+## RMSProb
 
 Unnormalized Inputs (100 epochs):
 
-![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.sgd.unnormalized.100epochs.png?raw=true)
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.rmsprop.unnormalized.100epochs.png?raw=true)
 
 Unnormalized Inputs (1000 epochs):
 
-![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.sgd.unnormalized.1000epochs.png?raw=true)
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.rmsprob.unnormalized.1000epochs.png?raw=true)
