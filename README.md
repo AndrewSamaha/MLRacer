@@ -44,3 +44,11 @@ Goal: Understand the distributions of the target classes (position, velocity, & 
 The good news is that nothing unusual is happening here -- the ranges are exactly what I expected. And, that's also the bad news. Why does the network perform more poorly when the values are normalized?
 
 ![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha2.position.png?raw=true)
+
+Normalized:
+
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.normalized.50epochs.png?raw=true)
+
+Unnormalized:
+
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.unnormalized.50epochs.png?raw=true)
