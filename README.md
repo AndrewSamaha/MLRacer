@@ -67,4 +67,4 @@ Unnormalized Inputs (100 epochs):
 
 Unnormalized Inputs (1000 epochs):
 
-![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.unnormalized.1000epochs.png?raw=true)
+![Comparison of Training and Test](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.sgd.unnormalized.1000epochs.png?raw=true)
