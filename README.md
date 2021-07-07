@@ -149,6 +149,28 @@ Nadam bottomed out pretty quickly. Might benefit from a lower learning rate.
 
     train_rsquared, test_rsquared, modelPosition  = buildModelSingleTask(X_train, y_train_position.reshape(-1,1), X_test, y_test_position.reshape(-1,1), optimizer= tf.keras.optimizers.RMSprop(learning_rate=0.00005), loss='mean_squared_error', inputScaler=1, epochs=100, filename="alpha.5layer.2-30pctdrop.rmsprop00005.mse.unnormalized.100epochs.png")
 
-
+# 5-layer Model, 40% dropout, mse
 ![5 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.2-30pctdrop.rmsprop00005.mse.unnormalized.100epochs.png?raw=true)
 
+    model = Sequential()
+    model.add(Flatten(input_shape=(2500,1)))
+    model.add(Dropout(.4))
+    model.add(Dense(160, activation="relu"))
+    model.add(Dense(40, activation="relu"))
+    model.add(Dense(10, activation="relu")) # lets try an intermediary layer of 625?
+    model.add(Dense(1))
+    #adam vs. sgd; adam works better
+    model.compile(optimizer=optimizer,
+              loss=loss,
+              metrics=[tf.keras.metrics.MeanSquaredError()])
+
+    train_rsquared, test_rsquared, modelPosition  = buildModelSingleTask(X_train, y_train_position.reshape(-1,1), X_test, y_test_position.reshape(-1,1), optimizer= tf.keras.optimizers.RMSprop(learning_rate=0.00005), loss='mean_squared_error', inputScaler=1, epochs=100, filename="alpha.5layer.1-40pctdrop.rmsprop00005.mse.unnormalized.100epochs.png")
+
+
+![5 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.1-40pctdrop.rmsprop00005.mse.unnormalized.100epochs.png?raw=true)
+
+# 5-layer Model, 50% dropout, mse
+![5 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.1-50pctdrop.rmsprop00005.mse.unnormalized.100epochs.png?raw=true)
+
+# 5-layer Model, 60% dropout, mse
+![5 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.1-50pctdrop.rmsprop00005.mse.unnormalized.100epochs.png?raw=true)
