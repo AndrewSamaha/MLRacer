@@ -119,3 +119,15 @@ Nadam bottomed out pretty quickly. Might benefit from a lower learning rate.
 ## 20% dropout
 100 epochs-
 ![6 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.6layer.20pctdrop.rmsprop.mae.unnormalized.100epochs.png?raw=true)
+
+## 30% dropout
+100 epochs-
+![6 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.6layer.30pctdrop.rmsprop.mae.unnormalized.100epochs.png?raw=true)
+
+## 30% dropout, .0005 learning rate
+100 epochs-
+![6 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.6layer.30pctdrop.rmsprop0005.mae.unnormalized.100epochs.png?raw=true)
+
+## 3rd 30% dropout layer, .00005 learning rate
+100 epochs-
+![6 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.6layer.3-30pctdrop.rmsprop00005.mae.unnormalized.100epochs.png?raw=true)
