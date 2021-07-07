@@ -193,3 +193,11 @@ Nadam bottomed out pretty quickly. Might benefit from a lower learning rate.
 
 100 epochs...
 ![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.100epochs.png?raw=true)
+
+Finally, some promising results on the test dataset. What happens if we feed the model model data?
+
+# 4-layer Super Dense, 2-20% dropout layers, mse
+
+100 epochs...
+![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.100epochs.png?raw=true)
+
