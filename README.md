@@ -103,13 +103,19 @@ Nadam bottomed out pretty quickly. Might benefit from a lower learning rate.
     model = Sequential()
     model.add(Flatten(input_shape=(2500,1)))
     model.add(Dense(625, activation="relu"))
-    model.add(Dropout(.2))
+    model.add(Dropout(.1))
     model.add(Dense(160, activation="relu"))
-    model.add(Dropout(.2))
+    model.add(Dropout(.1))
     model.add(Dense(40, activation="relu"))
     model.add(Dense(10, activation="relu"))
     model.add(Dense(1))
     model.compile(optimizer=optimizer, loss=loss, metrics=[tf.keras.metrics.MeanSquaredError()])
     model.build()
 
+## 10% dropout
+100 epochs-
 ![6 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.6layer.10pctdrop.rmsprop.mae.unnormalized.100epochs.png?raw=true)
+
+## 20% dropout
+100 epochs-
+![6 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.6layer.20pctdrop.rmsprop.mae.unnormalized.100epochs.png?raw=true)
