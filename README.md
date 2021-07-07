@@ -131,3 +131,24 @@ Nadam bottomed out pretty quickly. Might benefit from a lower learning rate.
 ## 3rd 30% dropout layer, .00005 learning rate
 100 epochs-
 ![6 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.6layer.3-30pctdrop.rmsprop00005.mae.unnormalized.100epochs.png?raw=true)
+
+# 5-layer Model, 30% dropout, mse
+    model = Sequential()
+    model.add(Flatten(input_shape=(2500,1)))
+    model.add(Dense(160, activation="relu"))
+    model.add(Dropout(.3))
+    model.add(Dense(40, activation="relu"))
+    model.add(Dropout(.3))
+    model.add(Dense(10, activation="relu")) # lets try an intermediary layer of 625?
+    model.add(Dense(1))
+    #adam vs. sgd; adam works better
+    model.compile(optimizer=optimizer,
+              loss=loss,
+              metrics=[tf.keras.metrics.MeanSquaredError()])
+    model.build()
+
+    train_rsquared, test_rsquared, modelPosition  = buildModelSingleTask(X_train, y_train_position.reshape(-1,1), X_test, y_test_position.reshape(-1,1), optimizer= tf.keras.optimizers.RMSprop(learning_rate=0.00005), loss='mean_squared_error', inputScaler=1, epochs=100, filename="alpha.5layer.2-30pctdrop.rmsprop00005.mse.unnormalized.100epochs.png")
+
+
+![5 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.2-30pctdrop.rmsprop00005.mse.unnormalized.100epochs.png?raw=true)
+
