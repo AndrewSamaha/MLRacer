@@ -199,6 +199,13 @@ Finally, some promising results on the test dataset. What happens if we feed the
 # 4-layer Super Dense, 2-20% dropout layers, mse
 
 100 epochs...
+
 ![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.100epochs.png?raw=true)
 
-I was doing all this with a growing worry in the back of my mind that hadn't quite formed into words. A few hours after getting this result, the words finally came: the difference between one image and the next was not simply a function of the vehicle's speed, but also of 1/rate at which I was capturing frames. So, I needed to rewrite my process function to encode time deltas between images and then pass that into the network as input. So, my nice round number for input array of 2500 would be 2501.
+I was doing all this with a growing worry in the back of my mind that hadn't quite formed into words. A few hours after getting this result, the words finally came: the difference between one image and the next was not simply a function of the vehicle's speed, but also of 1/rate at which I was capturing frames. So, I needed to rewrite my process function to encode time deltas between images and then pass that into the network as input. So, my nice round number for input array of 2500 would be 2501. While this shouldn't matter for position (what the above model predicted), it would certainly become a problem later when trying to predict velocity.
+
+# 4-layer Dense, 2500+1 columns
+100 epochs...
+
+![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.100epochs.png?raw=true)
+alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.tdelta.100epochs.png

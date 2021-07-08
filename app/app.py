@@ -8,7 +8,7 @@ from src.db import *
 
 mydb = mysql.connect(
     host="127.0.0.1",
-    port=49157,
+    port=49158,
     user="root",
     password="datascience",
     database="racer")

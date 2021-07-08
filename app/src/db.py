@@ -87,10 +87,10 @@ def getLayers(db):
 #     except Exception as e:
 #         print(f"Exception: {e}")
 
-def saveImage(db, batchid, layerid, time, position, velocity, rotation, image):
-    insertCmd = "INSERT into images(time, position, velocity, rotation, batchid, layerid, image) VALUES (%s,%s,%s,%s,%s,%s,%s);"
+def saveImage(db, batchid, layerid, time, position, velocity, rotation, image, tdelta=None):
+    insertCmd = "INSERT into images(time, position, velocity, rotation, batchid, layerid, tdelta, image) VALUES (%s,%s,%s,%s,%s,%s,%s,%s);"
     try:
-        db.cursor().execute(insertCmd, (time, position, velocity, rotation, batchid, layerid, image))
+        db.cursor().execute(insertCmd, (time, position, velocity, rotation, batchid, layerid, tdelta, image))
         db.commit()
     except Exception as e:
         print(f"Exception: {e}")
@@ -101,20 +101,30 @@ def getDataset(db, batch, layer):
     results = dbcursor.fetchall()
     X = None
     Y = None
-    for result in results:
-        image_arr = uriToNP(result[7])
-        x_row = image_arr.reshape(1,-1)
-        #print(x_row.shape)
-        
+    TDeltaCol = None
+    for i, result in enumerate(results):
+        if i % 1000 == 0 and i > 0:
+            print(f"loaded {i} out of {len(results)}, {100*i/len(results)}%   TDeltaCol.shape={TDeltaCol.shape}")
+
         position = result[2]
         velocity = result[3]
         rotation = result[4]
+        tdelta   = np.array(result[7]).reshape(1,1)
+
+        image_arr = uriToNP(result[8])
+        x_row = image_arr.reshape(1,-1)
+        #x_row = np.append(x_row, tdelta)
+
         y_row = np.array([position, velocity, rotation]).reshape(1,-1)
+
         if X is not None:
             X = np.vstack((X, x_row))
             Y = np.vstack((Y, y_row))
+            TDeltaCol = np.vstack((TDeltaCol, tdelta))
         else:
             X = x_row
             Y = y_row
-            
+            TDeltaCol = tdelta
+
+    X = np.hstack((X,TDeltaCol))
     return X, Y
