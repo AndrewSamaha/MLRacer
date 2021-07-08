@@ -207,5 +207,4 @@ I was doing all this with a growing worry in the back of my mind that hadn't qui
 # 4-layer Dense, 2500+1 columns
 100 epochs...
 
-![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.100epochs.png?raw=true)
-alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.tdelta.100epochs.png
+![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.tdelta.100epochs.png?raw=true)
