@@ -209,3 +209,7 @@ I was doing all this with a growing worry in the back of my mind that hadn't qui
 100 epochs...
 
 ![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.tdelta.100epochs.png?raw=true)
+
+Here's what the performance looks like when plotted again actual position data using a holdout dataset of 5k rows:
+![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.tdelta.100epochs.holdout.png?raw=true)
+
