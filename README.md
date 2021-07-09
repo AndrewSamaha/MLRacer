@@ -213,3 +213,8 @@ I was doing all this with a growing worry in the back of my mind that hadn't qui
 Here's what the performance looks like when plotted again actual position data using a holdout dataset of 5k rows:
 ![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.4layer.2-20pctdrop.rmsprop.mse.unnormalized.24krows.tdelta.100epochs.holdout.png?raw=true)
 
+# 5-layer dense, 2500+1 columns, 40k rows
+
+Doing an experiment with a deeper network after listening to TWIML AI Podcast #378 with Joseph Gonzalez, Assistant Professor in the EECS Department of UC Berkeley
+![4 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.3-20pctdrop.rmsprop.mse.unnormalized.40krows.100epochs.png?raw=true)
+

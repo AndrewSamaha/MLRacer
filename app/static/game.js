@@ -12,7 +12,7 @@ const context = c.getContext('2d');  // canvas 2d context
 const drawDistance = 800;            // how many road segments to draw in front of player
 const cameraDepth = 1;               // FOV of camera (1 / Math.tan((fieldOfView/2) * Math.PI/180))
 const roadSegmentLength = 100;       // length of each road segment
-const roadWidth = 200;               // how wide is road
+const roadWidth = 250;               // how wide is road
 const warningTrackWidth = 300;       // with of road plus warning track
 const dashLineWidth = 20;             // width of the dashed line in the road
 const maxPlayerX = 2e3;              // player can not move this far from center of road
@@ -92,7 +92,7 @@ function StartLevel()
             const difficulty = Math.min(1, i*roadSegmentLength/checkPointDistance/checkpointMaxDifficulty); // difficulty
             
             // randomize road settings
-            roadGenWidth = roadWidth*Random(1-difficulty*.7, 3-2*difficulty);        // road width
+            roadGenWidth = roadWidth;//*Random(1-difficulty*.7, 3-2*difficulty);        // road width
             roadGenWaveFrequencyX = Random(Lerp(difficulty, .01, .02));              // X frequency
             roadGenWaveFrequencyY = Random(Lerp(difficulty, .01, .03));              // Y frequency
             roadGenWaveScaleX = i > roadEnd ? 0 : Random(Lerp(difficulty, .2, .6));  // X scale
