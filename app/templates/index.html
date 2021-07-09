@@ -11,6 +11,11 @@
             background-color: #cccccc;
             color: white;
             }
+        .parameters {
+            margin: 0 auto;
+            width:300px;
+            text-align: center;
+        }
         </style>
         <script>
             let send_data = function() {
@@ -32,27 +37,36 @@
     </head>
     <body>
         <div>
-            <a href="/train">Teach the NN How to Play</a>
-            <canvas width="50px" height="50px" id=c style='touch-action:none;position:absolute;left:10%;top:10%;width:300px;height:300px;'></canvas>
-            
-            <div style='position:absolute;left:10%;top:50%;width:300px;height:300px;background-color:white;'>
-                <img id=road style='position:absolute;left:20px;top:60px;transform:rotate(-90deg);' 
-                    src="{{ url_for('static',filename='road.jpeg')}}"/>
-                <img id=car style='position:absolute;width:40px;height:40px;transform:rotate(-90deg);' 
-                    src="{{ url_for('static',filename='car.jpeg')}}"/>
+            <div style='display: flex; justify-content:center;'>
+                <a href="/train">Teach the NN How to Play</a>
+                <div id=canvasdiv style="top:105px;position:absolute;">
+                    <canvas width="50px" height="50px" id=c style='touch-action:none;width:400px;height:400px;'></canvas>
+                </div>
+                <div style='display:none;position:absolute;margin:auto;top:550px;width:400px;height:400px;background-color:white;'>
+                    <img id=road style='position:absolute;left:60px;top:60px;transform:rotate(-90deg);' 
+                        src="{{ url_for('static',filename='road.jpeg')}}"/>
+                    <img id=car style='position:absolute;left:40px;width:40px;height:40px;transform:rotate(-90deg);' 
+                        src="{{ url_for('static',filename='car.jpeg')}}"/>
+                </div>
+                <div id=setparameters style='justify-content:center; position:absolute;top:5px;width:400px;height:90px;background-color:white;color:black'>
+                    {% block content %}
+                    <div style='display: flex; justify-content:center;'><label>Select a batch to save to:</label></div>
+                    <div style='display: flex; justify-content:center;'>
+                        <select id="batchSelector" width="300px">
+                            {% for o in batchList %}
+                                <option value="{{ o[0] }}" SELECTED>{{ o[1] }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endblock content %}
+                </div>
+                <div id=parameters style='position:absolute;top:500px;width:400px;height:400px;background-color:white;color:black'></div>
+                <div style='position:absolute;top:85px;width:400px;height:20px;background-color:white;color:black'>
+                    <div style='display: flex; justify-content:center;'>
+                        <div id=fps></div>
+                    </div>
+                </div>
             </div>
-            <div id=setparameters style='position:absolute;left:50%;top:10%;width:320px;height:310px;background-color:white;color:black'>
-                {% block content %}
-                <label>Select a batch to save to:</label>
-                <select id="batchSelector" width="300px">
-                    {% for o in batchList %}
-                        <option value="{{ o[0] }}" SELECTED>{{ o[1] }}</option>
-                    {% endfor %}
-                </select>
-                {% endblock content %}
-            </div>
-            <div id=parameters style='position:absolute;left:50%;top:50%;width:320px;height:310px;background-color:white;color:black'></div>
-            <div id=fps style='position:absolute;left:10%;top:70px;width:300px;height:20px;background-color:white;color:black'></div>
         </div>
         <script src="{{ url_for('static',filename='game.js')}}"></script>
         <!-- <script>$("#c").css({"height":"500px", "width":"500px"})</script> -->

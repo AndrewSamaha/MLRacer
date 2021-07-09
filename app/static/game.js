@@ -12,11 +12,11 @@ const context = c.getContext('2d');  // canvas 2d context
 const drawDistance = 800;            // how many road segments to draw in front of player
 const cameraDepth = 1;               // FOV of camera (1 / Math.tan((fieldOfView/2) * Math.PI/180))
 const roadSegmentLength = 100;       // length of each road segment
-const roadWidth = 300;               // how wide is road
+const roadWidth = 200;               // how wide is road
 const warningTrackWidth = 300;       // with of road plus warning track
 const dashLineWidth = 20;             // width of the dashed line in the road
 const maxPlayerX = 2e3;              // player can not move this far from center of road
-const mountainCount = 6;            // how many mountains are there
+const mountainCount = 20;            // how many mountains are there
 const timeDelta = 1/60;              // inverse frame rate
 
 // player settings
@@ -223,7 +223,7 @@ function Update()
     }
   
     // update jump
-    if (playerAirFrame++<6 && mouseDown && mouseUpFrames && mouseUpFrames<9 && time)  // check for jump
+    if (0 && playerAirFrame++<6 && mouseDown && mouseUpFrames && mouseUpFrames<9 && time)  // check for jump
     {
         playerVelocity.y += playerJumpSpeed;                                          // apply jump velocity
         playerAirFrame = 9;                                                           // prevent jumping again
@@ -297,7 +297,7 @@ function Update()
             w = Random(.2,.8)**2*c.width/2,                                     // mountain width
             x+w*Random(-.5,.5),                                                 // random tip skew
             y - Random(.5,.8)*w, 0,                                             // mountain height
-            LSHA(Random(15,25)+i/3-lighting*9,i/2+Random(19),Random(220,230))); // mountain color
+            LSHA(Random(15,25)+i/3-lighting*9+50,i/2+Random(19),Random(220,230))); // mountain color
     }
     
     // draw horizon
@@ -353,7 +353,7 @@ function Update()
                     LSHA(25+lighting, 30, 95));                                     // ground color
 
                 // warning track
-                if (segment1.w > 400)                                               // no warning track if thin
+               // if (segment1.w > 400)                                               // no warning track if thin
                     DrawPoly(context,
                         p1.x, p1.y, p1.z*(segment1.w+warningTrackWidth),       // warning track top
                         p2.x, p2.y, p2.z*(segment2.w+warningTrackWidth),            // warning track bottom
@@ -368,7 +368,7 @@ function Update()
                     LSHA((z%checkPointDistance < 300 ? 70 : 7)+lighting)); // road color and checkpoint
                     
                 // dashed lines
-                if (segment1.w > 300)                                               // no dash lines if very thin
+                //if (segment1.w > 300)                                               // no dash lines if very thin
                     (playerRoadSegment+i)%5==0 && i < drawDistance/3 &&             // make dashes and skip if far out
                         DrawPoly(context,
                             p1.x, p1.y, p1.z*dashLineWidth,                    // dash lines top
@@ -465,12 +465,14 @@ function UpdateTopDown(data) {
 
 function UpdateParameterWindow(d) {
     let output = "";
-    output += "CameraHeading: " + d.cameraHeading + "<br>";
-    output += "PlayerTurnAmount: " + d.playerTurnAmount + "<br>";
-    output += "PlayerPos.x: " + d.playerPosX + "<br>";
-    output += "time: " + d.time + "<br>";
-    output += "playerVelocity: " + d.playerVelocity.z + "<br>";
-    output += "sendCount: " + sendCount + "<br>";
+    output += "<p><div class='parameters' style='text-decoration: underline;'>ground truths</div><P>";
+    output += "<div class='parameters'>world heading:</div><div class='parameters'>" + d.cameraHeading.toFixed(2) + "</div><br>";
+    output += "<div class='parameters'>vehicle heading:</div><div class='parameters'>" + d.playerTurnAmount.toFixed(4) + "</div><br>";
+    output += "<div class='parameters'>vehicle position: </div><div class='parameters'>" + d.playerPosX.toFixed(2) + "</div><br>";
+    output += "<div class='parameters'>vehicle speed:</div><div class='parameters'>" + d.playerVelocity.z.toFixed(2) + "</div><br>";
+    output += "<div class='parameters'>time:</div><div class='parameters'>" + d.time + "</div><br>";
+    
+    output += "<div class='parameters'>sendCount:</div><div class='parameters'>" + sendCount + "</div><P>";
     $("#parameters").html(output);
 }
 
@@ -747,7 +749,7 @@ function UpdateFps()
     let output = "";
     //output += "CameraHeading: " + d.cameraHeading + "<br>";
     //output += "PlayerTurnAmount: " + d.playerTurnAmount + "<br>";
-    output += "fps: " + averageFps;
+    output += averageFps.toFixed(1) + " fps";
     $("#fps").html(output);
     //context.font='3em"';
     //context.fillStyle='#0007';
