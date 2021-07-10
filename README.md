@@ -219,3 +219,5 @@ Doing an experiment with a deeper network after listening to TWIML AI Podcast #3
 ![5 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.3-20pctdrop.rmsprop.mse.unnormalized.40krows.100epochs.png?raw=true)
 
 ![5 Layer Model Across Time](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.3-20pctdrop.rmsprop.mse.unnormalized.40krows.tdelta.100epochs.holdout.png?raw=true)
+
+![5 Layer Model Residuals](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.3-20pctdrop.rmsprop.mse.unnormalized.40krows.100epochs.residuals.png?raw=true)
