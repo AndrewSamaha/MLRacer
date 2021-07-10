@@ -51,7 +51,7 @@ def predict():
         prediction = model.drive(imagearray, time)
         #saveImage(mydb, batchid, 0, time, position, velocity, rotation, image)
         return jsonify( 
-            position=churnAnswer,
+            position=prediction,
             time=time
         )
 
