@@ -215,6 +215,48 @@ Here's what the performance looks like when plotted again actual position data u
 
 # 5-layer dense, 2500+1 columns, 40k rows
 
+    model = Sequential()
+    model.add(Flatten(input_shape=(2501,1)))
+    model.add(Dropout(.2))
+    model.add(Dense(2501, activation="relu"))
+    model.add(Dropout(.2))
+    model.add(Dense(2501, activation="relu"))
+    model.add(Dropout(.2))
+    model.add(Dense(2501, activation="relu"))
+    model.add(Dense(1))
+    #adam vs. sgd; adam works better
+    model.compile(optimizer=optimizer,
+              loss=loss,
+              metrics=[tf.keras.metrics.MeanSquaredError()])
+    model.build()
+    model.summary()
+
+
+    Model: "sequential_1"
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    flatten_1 (Flatten)          (None, 2501)              0         
+    _________________________________________________________________
+    dropout_3 (Dropout)          (None, 2501)              0         
+    _________________________________________________________________
+    dense_4 (Dense)              (None, 2501)              6257502   
+    _________________________________________________________________
+    dropout_4 (Dropout)          (None, 2501)              0         
+    _________________________________________________________________
+    dense_5 (Dense)              (None, 2501)              6257502   
+    _________________________________________________________________
+    dropout_5 (Dropout)          (None, 2501)              0         
+    _________________________________________________________________
+    dense_6 (Dense)              (None, 2501)              6257502   
+    _________________________________________________________________
+    dense_7 (Dense)              (None, 1)                 2502      
+    =================================================================
+    Total params: 18,775,008
+    Trainable params: 18,775,008
+    Non-trainable params: 0
+
+
 Doing an experiment with a deeper network after listening to TWIML AI Podcast #378 with Joseph Gonzalez, Assistant Professor in the EECS Department of UC Berkeley
 ![5 Layer Model](https://github.com/AndrewSamaha/MLRacer/blob/main/img/alpha.5layer.3-20pctdrop.rmsprop.mse.unnormalized.40krows.100epochs.png?raw=true)
 
