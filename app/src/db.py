@@ -53,6 +53,14 @@ def pilToURI(img):
     ret = u'data:image/png;base64,'+str(img_str)[2:-1:]
     return ret
 
+def getTimeFromNP(nparray):
+    if len(nparray.shape) == 2:
+        t = nparray[:,-1]
+    elif len(nparray.shape) == 3:
+        t = nparray[:,-1,0]
+    return t
+
+
 '''
 database functions
 '''
