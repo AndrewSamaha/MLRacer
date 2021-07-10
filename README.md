@@ -1,5 +1,5 @@
 # MLRacer
-This project is inspired by the work of Assistant Professor [Madhur Behl](https://engineering.virginia.edu/faculty/madhur-behl) in the Department of Computer Science at the University of Virginia and uses a modified version of [HueRacer](https://github.com/KilledByAPixel/HueJumper2k) by [Frank Force](https://github.com/KilledByAPixel).
+This project is inspired by the work of Assistant Professor [Madhur Behl](https://engineering.virginia.edu/faculty/madhur-behl) in the Department of Computer Science at the University of Virginia and uses a modified version of [HueRacer](https://github.com/KilledByAPixel/HueJumper2k) by [Frank Force](https://github.com/KilledByAPixel). Also, a special mention to Assistant Professor [Joseph Gonzalez](https://people.eecs.berkeley.edu/~jegonzal/) in the EECS Department at UC Berkeley for his work on optimizing model size.
 
 ![Original Video of Modified HueRacer](https://github.com/AndrewSamaha/MLRacer/blob/main/img/original.gif?raw=true)
 ![Deltas Video of Modified HueRacer](https://github.com/AndrewSamaha/MLRacer/blob/main/img/deltas.gif?raw=true)
